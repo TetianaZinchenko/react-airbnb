@@ -1,0 +1,14 @@
+.attractions__block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.attraction__link {
+  color: #000000;
+  font-size: 16px;
+  text-decoration: underline;
+
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 8px;
+}

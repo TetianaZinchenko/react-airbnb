@@ -1,0 +1,15 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contact__main {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact__info {
+  font-size: 16px;
+}

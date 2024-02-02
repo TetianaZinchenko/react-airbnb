@@ -1,3 +1,17 @@
+import Page from "./component/page";
+import Header from "./component/header";
+import Title from "./component/title";
+import Photo from "./component/photo";
+import Price from "./component/price";
+import RoomList from "./component/room-list";
+import Description from "./component/description";
+import PropertyDetails from "./component/property-details";
+import Amenities from "./component/amenities";
+import ContactInfo from "./component/contact-info";
+import AdditionalProperties from "./component/additional-properties";
+import GuestReviews from "./component/guest-reviews";
+import NearbyAttractions from "./component/nearby-attractions";
+
 function App() {
   const data = {
     listing_name: "Іст-Сайд Біл",
@@ -144,7 +158,56 @@ function App() {
     ],
   };
 
-  return <div>Hello World</div>;
+  return (
+    <Page>
+      <Header />
+      <Title
+        title={data.listing_name}
+        rating={data.reviews_summary.average_rating}
+        review={data.reviews_summary.total_reviews}
+        city={data.location.city}
+        country={data.location.country}
+        superhost={data.superhost}
+      />
+      <Photo src={data.image} name={data.listing_name} />
+      <Price
+        price={data.price.original_price}
+        discount={data.price.discounted_price}
+        currency={data.price.currency}
+        cleaning={data.price.cleaning_fee}
+        service={data.price.service_fee}
+        checkin={data.availability.checkin_date}
+        checkout={data.availability.checkout_date}
+      />
+      <RoomList list={data.roomTypes} />
+      <Description title="Опис" children={data.description} />
+      <PropertyDetails
+        title="Деталі властивості:"
+        children={data.property_details}
+      />
+      <Description title="Про сусідів" children={data.neighborhood_info} />
+      <Amenities title="Зручності" children={data.amenities} />
+      <ContactInfo
+        name={data.contact_info.name}
+        image={data.contact_info.image}
+        rate={data.contact_info.response_rate}
+        time={data.contact_info.response_time}
+        info={data.contact_info.info}
+        phone={data.contact_info.phone}
+      />
+      <AdditionalProperties
+        title="Додаткові властивості"
+        rules={data.additional_properties.house_rules}
+        policy={data.additional_properties.cancellation_policy}
+        transportation={data.additional_properties.local_transportation}
+        languages={data.additional_properties.host_languages}
+        offers={data.additional_properties.special_offers}
+        checkin={data.additional_properties["check-in_instructions"]}
+      />
+      <GuestReviews list={data.guestReviews} />
+      <NearbyAttractions list={data.nearbyAttractions} />
+    </Page>
+  );
 }
 
 export default App;
